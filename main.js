@@ -6,10 +6,10 @@ const buttonBuscar = document.querySelector(".js-button2");
 const listTasks = document.querySelector(".js-list");
 
 const tasks = [
-    { name: "Aprender flexbox", completed: true},
-    { name: "Maquetar la página web del proyecto", completed: true},
-    { name: "Estudiar la lección invertida", completed: true},
-    { name: "Aprender cómo se realizan las peticiones al servidor en JavaScript", completed: false},
+    { name: "Aprender flexbox", completed: true, id: 1},
+    { name: "Maquetar la página web del proyecto", completed: true, id:2},
+    { name: "Estudiar la lección invertida", completed: true, id:3},
+    { name: "Aprender cómo se realizan las peticiones al servidor en JavaScript", completed: false, id:4},
     ];
 
 const list = (tasks) => {
