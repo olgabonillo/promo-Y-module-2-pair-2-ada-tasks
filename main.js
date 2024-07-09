@@ -12,12 +12,12 @@ const tasks = [
     { name: "Aprender cómo se realizan las peticiones al servidor en JavaScript", completed: false, id:4},
     ];
 
-const list = (tasks) => {
-    listTasks.innerHTML += (tasks.name)
-    };
-/* listTasks.innerHTML = (""); */
-
-
-
- console.log(tasks);
+    let taskHTML = '';
+    tasks.forEach((task) => {
+        const classli = task.completed === true ? 'tachado' : ''
+        const ischecks = task.completed === true ? 'checked' : ''
+        taskHTML += `<li class='${classli}'> <input type='checkbox' id='${task.id}'${ischecks}>${task.name}</li>`;
+        
+    });
+    listTasks.innerHTML = taskHTML;
 

@@ -1,3 +1,6 @@
 .list {
     list-style-type: none;
 }
+.tachado {
+   text-decoration: line-through;
+}
