@@ -10,16 +10,33 @@ const SERVER_URL = `https://dev.adalab.es/api/todo/${GITHUB_USER}`;
 
 
 //EJERCICIO DOM
+/** 
+ * ul.js-list
+ *   -> li
+ *       -> input  (id, data-id, type, checked)
+ *       -> #textNode (text)
+ */
 function renderTasks(tasks) {
+  listTasks.innerHTML = '';
 
   tasks.forEach((task) => {
-    console.log(task);
     const liElement = document.createElement('li');
+    
+    const taskInput = document.createElement('input');
+    taskInput.id = `task_${task.id}`;
+    taskInput.dataset.id = task.id;
+    taskInput.setAttribute('type', 'checkbox');
+    taskInput.checked = task.completed;
+
+    const taskText = document.createTextNode(task.name);
+
+    liElement.appendChild(taskInput);
+    liElement.appendChild(taskText);
+
     listTasks.appendChild(liElement);
-    const newInput = document.createElement('formList');
   });
 
-
+  // data-<asdasd>=""
 
   //EJERCICIO FILTER- se guarda en una variable la cantidad de tareas que estan hechas y las que faltan por hacer para
   //se crea un filter y como condicion se usa task completed y no completed y luego obtengo el length.
@@ -28,6 +45,7 @@ function renderTasks(tasks) {
 
   tareasTotales.innerHTML = `Tienes ${tasks.length} tareas. ${completedTasks} completadas y ${todoTasks} por realizar.`;
 }
+
 //EJERCICIO FECHT
 let task = [];
 fetch(SERVER_URL)
@@ -36,8 +54,6 @@ fetch(SERVER_URL)
   })
   .then((data) => {
     const tasks = data.results;
-    console.log(data);
-
     renderTasks(tasks);
   });
 
