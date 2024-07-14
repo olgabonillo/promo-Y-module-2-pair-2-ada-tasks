@@ -8,27 +8,27 @@ const tareasTotales = document.querySelector(".js-frase");
 const GITHUB_USER = "olgabonillo";
 const SERVER_URL = `https://dev.adalab.es/api/todo/${GITHUB_USER}`;
 
-
 //EJERCICIO DOM
-/** 
+/**
  * ul.js-list
  *   -> li
  *       -> input  (id, data-id, type, checked)
  *       -> #textNode (text)
  */
 function renderTasks(tasks) {
-  listTasks.innerHTML = '';
-  
+  listTasks.innerHTML = "";
+
   tasks.forEach((task) => {
-    const liElement = document.createElement('li');
-    const taskInput = document.createElement('input');
+    const liElement = document.createElement("li");
+    const taskInput = document.createElement("input");
     const taskText = document.createTextNode(task.name);
 
     taskInput.id = `task_${task.id}`;
     taskInput.dataset.id = task.id;
-    taskInput.setAttribute('type', 'checkbox');
+    taskInput.setAttribute("type", "checkbox");
     taskInput.checked = task.completed;
 
+    liElement.classList.add(task.completed === true ? "tachado" : "normal");
     liElement.appendChild(taskInput);
     liElement.appendChild(taskText);
 
@@ -56,8 +56,6 @@ fetch(SERVER_URL)
     renderTasks(tasks);
   });
 
-  
-    /* const classli = task.completed === true ? "tachado" : "";
+/* const classli = task.completed === true ? "tachado" : "";
      const ischecks = task.completed === true ? "checked" : "";
      taskHTML += `<li class='${classli}'> <input type='checkbox' id='${task.id}'${ischecks}>${task.name}</li>`; */
-    
