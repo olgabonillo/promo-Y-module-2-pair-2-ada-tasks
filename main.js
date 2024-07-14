@@ -18,17 +18,16 @@ const SERVER_URL = `https://dev.adalab.es/api/todo/${GITHUB_USER}`;
  */
 function renderTasks(tasks) {
   listTasks.innerHTML = '';
-
+  
   tasks.forEach((task) => {
     const liElement = document.createElement('li');
-    
     const taskInput = document.createElement('input');
+    const taskText = document.createTextNode(task.name);
+
     taskInput.id = `task_${task.id}`;
     taskInput.dataset.id = task.id;
     taskInput.setAttribute('type', 'checkbox');
     taskInput.checked = task.completed;
-
-    const taskText = document.createTextNode(task.name);
 
     liElement.appendChild(taskInput);
     liElement.appendChild(taskText);
