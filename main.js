@@ -35,6 +35,37 @@ function renderTasks(tasks) {
     listTasks.appendChild(liElement);
   });
 
+  // Función para agregar una nueva tarea
+  function adapair () {
+    const taskText = liElement.value();
+  
+    if (taskText !== "") {
+      const uniqueId = texElement();
+  
+      tasks.push({
+        id: uniqueId,
+        name: taskText,
+        completed: false,
+      });
+
+      renderTasks(tasks);
+      liElement.value = "";
+      completedTasks.value = "";
+      liElement.innerHTML = "";
+      
+    }
+  }
+  
+
+  function handleTask(event) {
+    event.preventDefault();
+    adapair(event);
+    
+  }
+  console.log(handleTask);
+  
+  handleTask();
+
   // data-<asdasd>=""
 
   //EJERCICIO FILTER- se guarda en una variable la cantidad de tareas que estan hechas y las que faltan por hacer para
